@@ -2,6 +2,7 @@
 # if [ -f ~/git/shellconf/profile ]; then source ~/git/shellconf/profile; fi
 
 # my favorite editor
+export EDITOR=vi
 export SVN_EDITOR=vi
 export FAVORITE_EDITOR=bbedit
 
