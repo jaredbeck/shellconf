@@ -24,6 +24,7 @@ alias gitst='clear;git status'
 alias a="if [ -d .svn ]; then svnadd; else git add -A; fi"
 alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
 alias d="if [ -d .svn ]; then svn diff; else git diff; fi"
+alias p="git push"
 alias s="if [ -d .svn ]; then svn stat; else git status; fi"
 
 alias blockms='sudo ipfw add 0 deny udp from any to any 2222'
