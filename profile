@@ -1,5 +1,6 @@
 # Include me in your ~/.profile like this:
-# if [ -f ~/git/shellconf/profile ]; then source ~/git/shellconf/profile; fi
+# SHELLCONF_PATH=$HOME/git/jaredbeck/shellconf
+# if [ -f $SHELLCONF_PATH/profile ]; then source $SHELLCONF_PATH/profile; fi
 
 # my favorite editor
 export EDITOR=vi
