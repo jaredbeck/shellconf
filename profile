@@ -35,13 +35,6 @@ parse_git_branch() {
   printf "${1:-(%s)}" "${ref#refs/heads/}"
 }
 
-parse_svn_revision() {
-  local DIRTY REV=$(svn info 2>/dev/null | grep Revision | sed -e 's/Revision: //')
-  [ "$REV" ] || return
-  [ "$(svn st)" ] && DIRTY=' *'
-  echo "(r$REV$DIRTY)"
-}
-
 pimp_prompt() {
   local BLUE="\[\033[0;34m\]"
   local BLUE_BOLD="\[\033[1;34m\]"
@@ -61,9 +54,12 @@ pimp_prompt() {
     TITLEBAR=""
     ;;
   esac
-#PS1="${TITLEBAR}[$WHITE\u@$BLUE_BOLD\h$WHITE \w$GREEN\$(parse_git_branch)\$(parse_svn_revision) $RED\$(~/.rvm/bin/rvm-prompt v g)$WHITE]\$ "
-#PS1="${TITLEBAR}[$WHITE\u@$BLUE_BOLD\h$WHITE \w$GREEN\$(parse_git_branch)\$(parse_svn_revision)$WHITE]\$ "
-PS1="${TITLEBAR}$DEFAULT\u@\h \w$GREEN\$(parse_git_branch)$DEFAULT\$ "
+
+# 2011 style with user@host
+#PS1="${TITLEBAR}$DEFAULT\u@\h \w$GREEN\$(parse_git_branch)$DEFAULT\$ "
+
+# 2012 style with timestamp instead
+PS1="${TITLEBAR}$DEFAULT$WHITE_BOLD\t$WHITE \W $GREEN\$(parse_git_branch)$DEFAULT\$ "
 PS2='> '
 PS4='+ '
 }
