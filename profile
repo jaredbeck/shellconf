@@ -35,9 +35,12 @@ parse_git_branch() {
   printf "${1:-(%s)}" "${ref#refs/heads/}"
 }
 
+# Bash Color Chart
+# http://www.arwin.net/tech/bash_colors.png
 pimp_prompt() {
   local BLUE="\[\033[0;34m\]"
   local BLUE_BOLD="\[\033[1;34m\]"
+  local CYAN="\[\033[0;36m\]"
   local RED="\[\033[0;31m\]"
   local LIGHT_RED="\[\033[1;31m\]"
   local GREEN="\[\033[0;32m\]"
@@ -59,7 +62,7 @@ pimp_prompt() {
 #PS1="${TITLEBAR}$DEFAULT\u@\h \w$GREEN\$(parse_git_branch)$DEFAULT\$ "
 
 # 2012 style with timestamp instead
-PS1="${TITLEBAR}$DEFAULT$WHITE_BOLD\t$WHITE \W $GREEN\$(parse_git_branch)$DEFAULT\$ "
+PS1="${TITLEBAR}$DEFAULT$WHITE_BOLD\t $CYAN\h $WHITE\W $GREEN\$(parse_git_branch)$DEFAULT\$ "
 PS2='> '
 PS4='+ '
 }
