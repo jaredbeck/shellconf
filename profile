@@ -11,23 +11,24 @@ export FAVORITE_EDITOR=bbedit
 LSCOLORS="gxfxcxdxbxegedabagacad"
 export LSCOLORS
 
-# aliases
+# Aliases: General
 alias l="clear; ls -lG"
 alias cdl="cd \!^; clear; ls -l"
 
-alias svnst='clear;svn status --ignore-externals | grep ^[^X]'
-alias svnadd='svn status | grep ^? | sed "s/^\?      //" | (while read i; do svn add $i; done)'
-alias svnrevert="svn stat | grep ^M | awk '{print $2}' | xargs -n 1 svn revert"
-
-alias gitst='clear;git status'
-
-# quick SCM commands
+# Aliases: Quick SCM commands
 alias a="if [ -d .svn ]; then svnadd; else git add -A; fi"
 alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
 alias d="if [ -d .svn ]; then svn diff; else git diff; fi"
 alias s="if [ -d .svn ]; then svnst; else gitst; fi"
 alias p="git push"
 
+# Aliases: SCM commands, mostly used by aliases above
+alias svnst='clear;svn status --ignore-externals | grep ^[^X]'
+alias svnadd='svn status | grep ^? | sed "s/^\?      //" | (while read i; do svn add $i; done)'
+alias svnrevert="svn stat | grep ^M | awk '{print $2}' | xargs -n 1 svn revert"
+alias gitst='clear;git status'
+
+# Aliases: Misc
 alias blockms='sudo ipfw add 0 deny udp from any to any 2222'
 
 parse_git_branch() {
