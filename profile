@@ -29,6 +29,7 @@ alias svnrevert="svn stat | grep ^M | awk '{print $2}' | xargs -n 1 svn revert"
 alias gitst='clear;git status'
 
 # Aliases: Misc
+alias be='bundle exec'
 alias blockms='sudo ipfw add 0 deny udp from any to any 2222'
 
 parse_git_branch() {
