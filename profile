@@ -2,6 +2,13 @@
 # SHELLCONF_PATH=$HOME/git/jaredbeck/shellconf
 # if [ -f $SHELLCONF_PATH/profile ]; then source $SHELLCONF_PATH/profile; fi
 
+SHELLCONF_PATH=$HOME/git/jaredbeck/shellconf
+
+# tab completion
+if [ -f $SHELLCONF_PATH/git-completion.bash ]; then
+  source $SHELLCONF_PATH/git-completion.bash;
+fi
+
 # my favorite editor
 export EDITOR=vi
 export SVN_EDITOR=vi
