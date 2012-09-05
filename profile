@@ -28,6 +28,7 @@ alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
 alias d="if [ -d .svn ]; then svn diff; else git diff; fi"
 alias s="if [ -d .svn ]; then svnst; else gitst; fi"
 alias p="git push"
+alias gprp="git pull --rebase && git push"
 
 # Aliases: SCM commands, mostly used by aliases above
 alias svnst='clear;svn status --ignore-externals | grep ^[^X]'
