@@ -33,12 +33,14 @@ def main
 
   # Read and output in the form: ID, pass/fail, most recent date
   CSV.foreach(csv_file, :headers => true) do |row|
+    story_id = row[0]
+    story_title = row[1]
     smushed = row.drop(1).join('')
     dates = smushed.scan(date_rgx).map{|d| Date.parse(d)}
     latest_date = dates.sort.last
     pass = latest_date >= cutoff_date
     date_output = latest_date.strftime(DATE_OUTPUT_FORMAT) rescue ''
-    puts [date_output, pass, row[0]].join(TAB)
+    puts [date_output, pass, story_id, story_title].join(TAB)
   end
 end
 
