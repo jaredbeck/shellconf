@@ -38,6 +38,7 @@ alias gitst='clear;git status'
 # Aliases: Misc
 alias be='bundle exec'
 alias blockms='sudo ipfw add 0 deny udp from any to any 2222'
+alias startwork='git pull --rebase && git submodule update --init && bundle update && be rake'
 
 parse_git_branch() {
   ref=$(git symbolic-ref -q HEAD 2> /dev/null) || return
