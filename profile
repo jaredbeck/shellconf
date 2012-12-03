@@ -15,8 +15,7 @@ export SVN_EDITOR=vi
 export FAVORITE_EDITOR=bbedit
 
 # terminal colors
-LSCOLORS="gxfxcxdxbxegedabagacad"
-export LSCOLORS
+export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 # Aliases: General
 alias l="clear; ls -lG"
