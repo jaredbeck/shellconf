@@ -18,7 +18,7 @@ export FAVORITE_EDITOR=bbedit
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 # Aliases: General
-alias l="clear; ls -lG"
+alias l="clear; ls -l"
 alias cdl="cd \!^; clear; ls -l"
 
 # Aliases: Quick SCM commands
