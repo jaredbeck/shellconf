@@ -15,7 +15,11 @@ export SVN_EDITOR=vi
 export FAVORITE_EDITOR=bbedit
 
 # terminal colors
-export LSCOLORS="gxfxcxdxbxegedabagacad"
+if [ -f /etc/issue ]; then
+  alias ls="ls --color"
+else
+  export LSCOLORS="gxfxcxdxbxegedabagacad"
+fi
 
 # Aliases: General
 alias l="clear; ls -l"
