@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-DFSAVEDIR=/opt/df_linux/data/save
+DFDATADIR=/opt/df_linux/data
+DFSAVEDIR="$DFDATADIR/save"
 BACKUPDIR=~/Personal/green/incorporeal/gaming/computer/df/backup
 
 function die {
@@ -34,7 +35,7 @@ assert_dir "/tmp$DFSAVEDIR"
 if [ -d "$DFSAVEDIR.bak" ]; then
   rm -r "$DFSAVEDIR.bak"
 fi
-cp -r "$DFSAVEDIR" "$DFSAVEDIR.bak"
+mv "$DFSAVEDIR" "$DFSAVEDIR.bak"
 
-mv "/tmp$DFSAVEDIR" "$DFSAVEDIR"
+mv "/tmp$DFSAVEDIR" "$DFDATADIR"
 
