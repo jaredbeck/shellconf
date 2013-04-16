@@ -9,6 +9,10 @@ if [ -f $SHELLCONF_PATH/git-completion.bash ]; then
   source $SHELLCONF_PATH/git-completion.bash;
 fi
 
+# Path.  Only put path components available on all systems here.
+# System-specific path components should go in ~/.profile
+export PATH=~/bin:${PATH}
+
 # my favorite editor
 export EDITOR=vi
 export SVN_EDITOR=vi
