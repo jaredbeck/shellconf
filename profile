@@ -22,6 +22,7 @@ export FAVORITE_EDITOR=bbedit
 if [ -f /etc/issue ]; then
   alias ls="ls --color"
 else
+  export CLICOLOR=1
   export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
