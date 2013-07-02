@@ -1,6 +1,6 @@
 # Include me in your ~/.profile like this:
 # SHELLCONF_PATH=$HOME/git/jaredbeck/shellconf
-# if [ -f $SHELLCONF_PATH/profile ]; then source $SHELLCONF_PATH/profile.sh; fi
+# if [ -f $SHELLCONF_PATH/profile.sh ]; then source $SHELLCONF_PATH/profile.sh; fi
 
 SHELLCONF_PATH=$HOME/git/jaredbeck/shellconf
 
