@@ -26,28 +26,10 @@ else
   export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
-# Aliases: General
-alias l="clear; ls -l"
-alias cdl="cd \!^; clear; ls -l"
-
-# Aliases: Quick SCM commands
-alias a="if [ -d .svn ]; then svnadd; else git add --all .; fi"
-alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
-alias d="if [ -d .svn ]; then svn diff; else git diff; fi"
-alias s="if [ -d .svn ]; then svnst; else gitst; fi"
-alias p="git push"
-alias gprp="git pull --rebase && git push"
-
-# Aliases: SCM commands, mostly used by aliases above
-alias svnst='clear;svn status --ignore-externals | grep ^[^X]'
-alias svnadd='svn status | grep ^? | sed "s/^\?      //" | (while read i; do svn add $i; done)'
-alias svnrevert="svn stat | grep ^M | awk '{print $2}' | xargs -n 1 svn revert"
-alias gitst='clear;git status'
-
-# Aliases: Misc
-alias be='bundle exec'
-alias blockms='sudo ipfw add 0 deny udp from any to any 2222'
-alias startwork='git pull --rebase && git submodule update --init && bundle update && be rake'
+# aliases
+if [ -f $SHELLCONF_PATH/lib/profile/aliases.sh ]; then
+  source $SHELLCONF_PATH/lib/profile/aliases.sh;
+fi
 
 parse_git_branch() {
   ref=$(git symbolic-ref -q HEAD 2> /dev/null) || return
