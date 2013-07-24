@@ -25,5 +25,10 @@ alias usejava8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8);PATH=${JAVA_HO
 alias be='bundle exec'
 alias startwork='git pull --rebase && git submodule update --init && bundle update && be rake'
 
+# Aliases: Dwarf Fortress
+alias dwarf='/opt/df_linux/df'
+alias dfbackup='~/git/jaredbeck/shellconf/bin/df/dfbackup.sh'
+alias dfrestore='~/git/jaredbeck/shellconf/bin/df/dfrestore.sh'
+
 # Aliases: Misc
 alias blockms='sudo ipfw add 0 deny udp from any to any 2222'
