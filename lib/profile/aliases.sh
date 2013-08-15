@@ -1,6 +1,7 @@
 # Aliases: General
 alias l="clear; ls -l"
 alias cdl="cd \!^; clear; ls -l"
+alias abspath="$SHELLCONF_PATH/bin/abspath.rb"
 
 # Aliases: Quick SCM commands
 alias a="if [ -d .svn ]; then svnadd; else git add --all .; fi"
