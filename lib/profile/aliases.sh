@@ -5,7 +5,7 @@ alias cdl="cd \!^; clear; ls -l"
 # Aliases: Quick SCM commands
 alias a="if [ -d .svn ]; then svnadd; else git add --all .; fi"
 alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
-alias d="if [ -d .svn ]; then svn diff; else git diff; fi"
+alias d="if [ -d .svn ]; then svn diff; else git diff --patience; fi"
 alias s="if [ -d .svn ]; then svnst; else gitst; fi"
 alias p="git push"
 alias gprp="git pull --rebase && git push"
