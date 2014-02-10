@@ -13,6 +13,11 @@ fi
 # System-specific path components should go in ~/.profile
 export PATH=~/bin:${PATH}
 
+# Apple puts the java_home utility in /usr/libexec, even though that is
+# for "binaries that are not intended to be executed directly by users"
+# http://www.linuxbase.org/betaspecs/fhs/fhs/ch04s07.html
+export PATH=${PATH}:/usr/libexec
+
 # my favorite editor
 export EDITOR=vi
 export SVN_EDITOR=vi

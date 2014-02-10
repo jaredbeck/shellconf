@@ -6,7 +6,7 @@ alias abspath="$SHELLCONF_PATH/bin/abspath.rb"
 # Aliases: Quick SCM commands
 alias a="if [ -d .svn ]; then svnadd; else git add --all .; fi"
 alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
-alias d="if [ -d .svn ]; then svn diff; else git diff; fi"
+alias d="if [ -d .svn ]; then svn diff; else git diff --patience; fi"
 alias s="if [ -d .svn ]; then svnst; else gitst; fi"
 alias p="git push"
 alias gprp="git pull --rebase && git push"
@@ -24,6 +24,7 @@ alias usejava8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8);PATH=${JAVA_HO
 
 # Aliases: Ruby dev
 alias be='bundle exec'
+alias cuke='bundle exec cucumber'
 alias startwork='git pull --rebase && git submodule update --init && bundle update && be rake'
 
 # Aliases: Dwarf Fortress
