@@ -9,6 +9,7 @@ alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
 alias d="if [ -d .svn ]; then svn diff; else git diff --patience; fi"
 alias s="if [ -d .svn ]; then svnst; else gitst; fi"
 alias p="git push"
+alias gl="git log --oneline --decorate"
 alias gprp="git pull --rebase && git push"
 
 # Aliases: SCM commands, mostly used by aliases above
