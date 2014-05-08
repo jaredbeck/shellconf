@@ -2,7 +2,6 @@
 
 require 'set'
 
-FMT = '%d %s'
 LINE_SEP = "\n"
 
 class BranchCherries
