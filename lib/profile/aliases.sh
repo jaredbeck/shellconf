@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Aliases: General
 alias l="clear; ls -l"
 alias cdl="cd \!^; clear; ls -l"
@@ -9,6 +11,7 @@ alias c="if [ -d .svn ]; then svn ci; else git commit; fi"
 alias d="if [ -d .svn ]; then svn diff; else git diff --patience; fi"
 alias s="if [ -d .svn ]; then svnst; else gitst; fi"
 alias p="git push"
+alias po="git push --set-upstream origin \"\$(git rev-parse --abbrev-ref HEAD)\""
 alias gl="git log --oneline --decorate"
 alias gprp="git pull --rebase && git push"
 
