@@ -20,6 +20,9 @@ alias gld="git log --date=iso "\
 "--pretty=format:'%C(auto)%h %C(dim)%<(10,mtrunc)%an %ad "\
 "%<(10,mtrunc)%cn %cd %Creset%C(auto)%d %s'"
 
+# Github
+alias hubpr="hub pull-request"
+
 # Switch between java environments
 alias usejava6='export JAVA_HOME=$(/usr/libexec/java_home -v 1.6);PATH=${JAVA_HOME}/bin:${PATH}'
 alias usejava7='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7);PATH=${JAVA_HOME}/bin:${PATH}'
