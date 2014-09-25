@@ -2,8 +2,6 @@
 
 require 'set'
 
-LINE_SEP = "\n"
-
 class BranchCherries
 
   attr_reader :branches
@@ -35,17 +33,19 @@ private
   end
 
   def delete(branch)
-    system('git branch --delete "%s" > /dev/null' % [branch])
+    system("git branch --delete '%s' > /dev/null" % [branch])
   end
 
   def local_branch_array
-    `git for-each-ref --format='%(refname)' refs/heads/ |
-    cut -d '/' -f 3`
-    .split(LINE_SEP)
+    local_ref_array.map { |ref| ref.gsub(%r{refs/heads/}, '') }
   end
 
   def local_branches
     Set.new(local_branch_array).delete('master')
+  end
+
+  def local_ref_array
+    `git for-each-ref --format='%(refname)' refs/heads/`.split($/)
   end
 
   def commits_ahead(branch)
