@@ -37,7 +37,7 @@ private
   end
 
   def local_branch_array
-    local_ref_array.map { |ref| ref.gsub(%r{refs/heads/}, '') }
+    local_ref_array.map { |ref| ref.gsub(%r{\Arefs/heads/}, '') }
   end
 
   def local_branches
