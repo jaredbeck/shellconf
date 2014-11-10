@@ -3,7 +3,6 @@
 require 'csv'
 require 'json'
 require 'pp'
-require 'pry'
 require 'net/http'
 
 class SearchTracker
