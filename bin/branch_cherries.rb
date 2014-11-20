@@ -28,8 +28,15 @@ private
     branches.reject { |br, n| n.zero? }
   end
 
+  # `deleteable` returns the names of deleteable branches.  The
+  # ternary provides ruby 1.8.7 support.
   def deleteable
-    @_deleteable ||= branches.select { |br, n| n.zero? }.keys
+    b = deleteable_branches
+    b.is_a?(Array) ? b.map(&:first) : b.keys
+  end
+
+  def deleteable_branches
+    @_deleteable_branches ||= branches.select { |br, n| n.zero? }
   end
 
   def delete(branch)
@@ -49,9 +56,7 @@ private
   end
 
   def commits_ahead(branch)
-    `git cherry master #{branch} |
-    wc -l`
-    .to_i
+    `git cherry master #{branch} | wc -l`.to_i
   end
 
   def branch_commits_ahead
