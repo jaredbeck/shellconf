@@ -1,4 +1,4 @@
-colorscheme ir_black "http://blog.toddwerth.com/entries/8
+set ruler
 set number "line numbers
 syntax on "syntax highlighting
 
