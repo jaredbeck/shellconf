@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
-require 'redcarpet'
+begin
+  require 'redcarpet'
+rescue LoadError => e
+  $stderr.puts "Unable to load markdown library, redcarpet: #{e}"
+  $stderr.puts 'Try: gem install redcarpet'
+  exit(1)
+end
 
 # preview.rb takes a single argument, the path to a markdown source
 # file, and writes the rendered html to stdout.
