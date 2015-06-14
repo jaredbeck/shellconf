@@ -36,6 +36,12 @@ if [ -f $SHELLCONF_PATH/lib/profile/aliases.sh ]; then
   source $SHELLCONF_PATH/lib/profile/aliases.sh;
 fi
 
+# rails
+export DISABLE_SPRING=1
+
+# prompt
+# ------
+
 parse_git_branch() {
   ref=$(git symbolic-ref -q HEAD 2> /dev/null) || return
   printf "${1:-(%s)}" "${ref#refs/heads/}"
