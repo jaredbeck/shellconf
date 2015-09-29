@@ -23,11 +23,16 @@ class CountFiles
   end
 
   def file_names
-    file_paths.map { |p| p.basename.to_s }
+    files.map { |p| p.basename.to_s }
   end
 
-  def file_paths
-    Dir.glob('**/*').map { |p| Pathname.new(p) }
+  # Returns an array of `Pathname`s.
+  def files
+    %x{
+      find . -type f ! -path "./.git/*" ! -path "./node_modules/*"
+    }.
+      split("\n").
+      map { |p| Pathname.new(p) }
   end
 
   def print(counts)
