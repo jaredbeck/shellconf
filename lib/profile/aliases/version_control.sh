@@ -5,6 +5,7 @@
 
 alias a='git add --all .'
 alias c='git commit'
+alias ca='git commit --amend --no-edit'
 alias d='git diff --patience'
 alias s='clear;git status'
 alias p='git push'
