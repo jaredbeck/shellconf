@@ -36,6 +36,9 @@ if [ -f $SHELLCONF_PATH/lib/profile/aliases.sh ]; then
   source $SHELLCONF_PATH/lib/profile/aliases.sh;
 fi
 
+# rails
+export DISABLE_SPRING=1
+
 # prompt
 # ------
 
