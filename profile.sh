@@ -21,6 +21,12 @@ export PATH=${PATH}:/usr/libexec
 # my favorite editor
 export EDITOR=vi
 
+# Add my identity to my SSH agent
+SSH_ID_FILE="$HOME/.ssh/id_rsa"
+if [ -f $SSH_ID_FILE ]; then
+  ssh-add $SSH_ID_FILE
+fi
+
 # terminal colors
 if [ -f /etc/issue ]; then
   alias ls="ls --color"
