@@ -20,8 +20,6 @@ export PATH=${PATH}:/usr/libexec
 
 # my favorite editor
 export EDITOR=vi
-export SVN_EDITOR=vi
-export FAVORITE_EDITOR=bbedit
 
 # terminal colors
 if [ -f /etc/issue ]; then
