@@ -48,7 +48,7 @@ export DISABLE_SPRING=1
 
 parse_git_branch() {
   ref=$(git symbolic-ref -q HEAD 2> /dev/null) || return
-  printf "${1:-(%s)}" "${ref#refs/heads/}"
+  printf "${1:-%s}" "${ref#refs/heads/}"
 }
 
 # Bash Color Chart
@@ -78,7 +78,8 @@ pimp_prompt() {
 #PS1="${TITLEBAR}$DEFAULT\u@\h \w$GREEN\$(parse_git_branch)$DEFAULT\$ "
 
 # 2012 style with timestamp instead
-PS1="${TITLEBAR}$DEFAULT$WHITE_BOLD\t $CYAN\h $WHITE\W $GREEN\$(parse_git_branch)$DEFAULT\$ "
+BANANA=$'\xf0\x9f\x8d\x8c'
+PS1='$? '"${TITLEBAR}$DEFAULT$WHITE_BOLD\A $CYAN\h $WHITE\W $GREEN\$(parse_git_branch)$DEFAULT $BANANA  "
 PS2='> '
 PS4='+ '
 }
