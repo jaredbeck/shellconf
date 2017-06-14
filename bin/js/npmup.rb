@@ -25,6 +25,7 @@ module Npmup
     end
 
     def run
+      abort("repo is not clean") unless repo_clean?
       v1 = version
       update
       v2 = version
@@ -38,8 +39,11 @@ module Npmup
       @gem.name
     end
 
+    # Of course, the lockfile (npm-shrinkwrap.json) will be modified and must
+    # be committed. Also (starting with npm 5?) package.json will be modified;
+    # the package version will be updated. So, that must also be committed.
     def git_add
-      `git add npm-shrinkwrap.json`
+      `git add package.json npm-shrinkwrap.json`
     end
 
     def git_commit(message)
@@ -50,11 +54,17 @@ module Npmup
       format "%s %s (was %s)", @package_name, v2, v1
     end
 
+    def repo_clean?
+      `git status --porcelain`.strip.empty?
+    end
+
     def update
       `npm update #{@package_name}`
       unless $CHILD_STATUS.success?
         abort "npm update failed"
       end
+
+      # Explicitly running shrinkwrap is not necessary in npm >= 5
       `npm shrinkwrap`
       unless $CHILD_STATUS.success?
         abort "npm shrinkwrap failed"
