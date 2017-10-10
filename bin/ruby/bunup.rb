@@ -77,9 +77,16 @@ module Bunup
     # ```
     #
     def version
-      stdout = `bundle show #{gem_name}`
+      cmd = "bundle show #{gem_name}"
+      stdout = `#{cmd}`
       if !$?.success? || stdout.strip.empty?
-        abort "Unable to determine current version of gem: #{gem_name}"
+        abort(
+          format(
+            "Unable to determine current version of gem: %s\nCommand was: %s",
+            gem_name,
+            cmd
+          )
+        )
       end
       stdout.chomp.split(File::PATH_SEPARATOR).last.split('-').last
     end
