@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def main base, first, last, suffix, new_base
   first.upto(last) do |i|

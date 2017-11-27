@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby -w
+# frozen_string_literal: true
+
 head, threshold = ARGV
 head ||= 'HEAD'
 Megabyte = 1000 ** 2

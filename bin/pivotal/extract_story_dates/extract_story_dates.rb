@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Given a csv file and a cutoff date, output the story id, latest
 # date, and a boolean re: cutoff. - Jared 2012-10-09
 USAGE = 'ruby extract_story_dates.rb [csv file] [cutoff date]'
