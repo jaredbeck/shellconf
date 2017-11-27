@@ -12,15 +12,6 @@ end
 # with a useful message, e.g. "rails 4.2.4 (was 4.2.3)".
 module Bunup
   class Gem
-    E_CURRENT_VERSION_SAME = <<~EOS
-      The current version, as determined by bundle show, is the same as the
-      latest version. If no update is necessary, exit with ctrl-c. If an update
-      is necessary, enter the current version.
-    EOS
-    E_UPDATE_CHANGED_NOTHING = <<~EOS
-      bundle update did not change gemfile: %s
-      Examine the version constraints in your Gemfile.
-    EOS
 
     # Gem name patterns taken from
     # https://github.com/rubygems/rubygems.org/blob/master/lib/patterns.rb
@@ -46,6 +37,15 @@ module Bunup
   end
 
   class CLI
+    E_CURRENT_VERSION_SAME = <<~EOS
+      The current version, as determined by bundle show, is the same as the
+      latest version. If no update is necessary, exit with ctrl-c. If an update
+      is necessary, enter the current version.
+    EOS
+    E_UPDATE_CHANGED_NOTHING = <<~EOS
+      bundle update did not change gemfile: %s
+      Examine the version constraints in your Gemfile.
+    EOS
     USAGE = "Usage: bunup.rb gem_name"
 
     def initialize(*args)
