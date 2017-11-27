@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+require 'English'
+require 'rubygems'
+
+if ::Gem::Version.new(RUBY_VERSION) < ::Gem::Version.new(2.3)
+  abort "This script requires ruby >= 2.3"
+end
+
 # Updates a single gem using `bundle update` and makes a git commit
 # with a useful message, e.g. "rails 4.2.4 (was 4.2.3)".
 module Bunup
@@ -64,6 +71,15 @@ module Bunup
       format "%s %s (was %s)", gem_name, v2, v1
     end
 
+    def prompt_for_version(prompt)
+      print prompt
+      input = $stdin.gets&.chomp
+      if input.nil? || input.empty? || !::Gem::Version.correct?(input)
+        abort "Invalid entry: Incorrect gem version format"
+      end
+      input
+    end
+
     def update
       `bundle update #{gem_name}`
     end
@@ -77,16 +93,11 @@ module Bunup
     # ```
     #
     def version
-      cmd = "bundle show #{gem_name}"
-      stdout = `#{cmd}`
-      if !$?.success? || stdout.strip.empty?
-        abort(
-          format(
-            "Unable to determine current version of gem: %s\nCommand was: %s",
-            gem_name,
-            cmd
-          )
-        )
+      stdout = `bundle show #{gem_name}`
+      if !$CHILD_STATUS.success? || stdout.strip.empty?
+        puts "Unable to determine current version by using bundle show"
+        puts stdout
+        return prompt_for_version("Enter current version: ")
       end
       stdout.chomp.split(File::PATH_SEPARATOR).last.split('-').last
     end
