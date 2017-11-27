@@ -3,3 +3,9 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   DisplayCopNames: true
   TargetRubyVersion: 2.4
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false

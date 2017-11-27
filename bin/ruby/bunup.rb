@@ -12,6 +12,15 @@ end
 # with a useful message, e.g. "rails 4.2.4 (was 4.2.3)".
 module Bunup
   class Gem
+    E_CURRENT_VERSION_SAME = <<~EOS
+      The current version, as determined by bundle show, is the same as the
+      latest version. If no update is necessary, exit with ctrl-c. If an update
+      is necessary, enter the current version.
+    EOS
+    E_UPDATE_CHANGED_NOTHING = <<~EOS
+      bundle update did not change gemfile: %s
+      Examine the version constraints in your Gemfile.
+    EOS
 
     # Gem name patterns taken from
     # https://github.com/rubygems/rubygems.org/blob/master/lib/patterns.rb
@@ -56,6 +65,12 @@ module Bunup
 
     private
 
+    def assert_gemfile_changed(update_cmd)
+      unless gemfile_changed?
+        abort(format(E_UPDATE_CHANGED_NOTHING, update_cmd))
+      end
+    end
+
     def gem_name
       @gem.name
     end
@@ -68,7 +83,16 @@ module Bunup
       `git commit -m "#{message}"`
     end
 
+    def gemfile_changed?
+      stdout = `git status --porcelain`
+      stdout.include?('M Gemfile') && stdout.include?('M Gemfile.lock')
+    end
+
     def message(v1, v2)
+      if v1 == v2
+        puts E_CURRENT_VERSION_SAME
+        v1 = prompt_for_version("Enter current version: ")
+      end
       format "%s %s (was %s)", gem_name, v2, v1
     end
 
@@ -82,7 +106,9 @@ module Bunup
     end
 
     def update
-      `bundle update #{gem_name}`
+      cmd = "bundle update #{gem_name}"
+      `#{cmd}`
+      assert_gemfile_changed(cmd)
     end
 
     # Returns version of gem in bundle, by using `bundle show`, which produces
