@@ -39,8 +39,8 @@ module Bunup
   class CLI
     E_CURRENT_VERSION_SAME = <<~EOS
       The current version, as determined by bundle show, is the same as the
-      latest version. If no update is necessary, exit with ctrl-c. If an update
-      is necessary, enter the current version.
+      latest version, but we know that's wrong because bundle udpate changed
+      the Gemfile.
     EOS
     E_UPDATE_CHANGED_NOTHING = <<~EOS
       bundle update did not change gemfile: %s
