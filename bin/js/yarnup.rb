@@ -22,6 +22,7 @@ module YarnUp
     E_VERSION_DID_NOT_CHANGE = "After `yarn upgrade`, the installed " \
       "version has not changed (according to `yarn list`). Review " \
       "the version constraints in your package.json."
+    USAGE = "Usage: yarnup.rb package_name"
 
     def initialize(*args)
       abort(USAGE) unless args.length == 1
