@@ -19,7 +19,9 @@ module YarnUp
   end
 
   class CLI
-    USAGE = "Usage: yarnup.rb package_name"
+    E_VERSION_DID_NOT_CHANGE = "After `yarn upgrade`, the installed " \
+      "version has not changed (according to `yarn list`). Review " \
+      "the version constraints in your package.json."
 
     def initialize(*args)
       abort(USAGE) unless args.length == 1
@@ -31,6 +33,9 @@ module YarnUp
       v1 = version
       upgrade
       v2 = version
+      if v2 == v1
+        abort(E_VERSION_DID_NOT_CHANGE)
+      end
       git_add
       git_commit message(v1, v2)
     end
@@ -93,7 +98,7 @@ module YarnUp
     # ]
     # ```
     def yarn_info
-      stdout = `yarn list --json #{@package_name}`
+      stdout = `yarn list --json --pattern #{@package_name}`
       if !$CHILD_STATUS.success? || stdout.strip.empty?
         raise CannotDetermineVersion.new(@package_name)
       end
