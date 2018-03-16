@@ -46,11 +46,6 @@ export DISABLE_SPRING=1
 # prompt
 # ------
 
-parse_git_branch() {
-  ref=$(git symbolic-ref -q HEAD 2> /dev/null) || return
-  printf "${1:-%s}" "${ref#refs/heads/}"
-}
-
 # Bash Color Chart
 # http://www.arwin.net/tech/bash_colors.png
 pimp_prompt() {
@@ -74,13 +69,19 @@ pimp_prompt() {
     ;;
   esac
 
-# 2011 style with user@host
-#PS1="${TITLEBAR}$DEFAULT\u@\h \w$GREEN\$(parse_git_branch)$DEFAULT\$ "
-
 # 2012 style with timestamp instead
 BANANA=$'\xf0\x9f\x8d\x8c'
-PS1='$? '"${TITLEBAR}$DEFAULT$WHITE_BOLD\A $CYAN\h $WHITE\W $GREEN\$(parse_git_branch)$DEFAULT $BANANA  "
+PS1='$? '"${TITLEBAR}$DEFAULT$WHITE_BOLD\A $CYAN\h $WHITE\W"
 PS2='> '
 PS4='+ '
 }
 pimp_prompt
+
+# https://github.com/magicmonty/bash-git-prompt
+GIT_PROMPT_THEME=Solarized
+GIT_PROMPT_START="$PS1"
+GIT_PROMPT_END=" $BANANA "
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+fi
