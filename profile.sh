@@ -85,3 +85,15 @@ if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
   source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
+
+# https://docs.brew.sh/Shell-Completion
+if type brew 2&>/dev/null; then
+  for completion_file in $(brew --prefix)/etc/bash_completion.d/*; do
+    source "$completion_file"
+  done
+fi
+
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/jared/Library/Caches/heroku/autocomplete/bash_setup && \
+  test -f $HEROKU_AC_BASH_SETUP_PATH && \
+  source $HEROKU_AC_BASH_SETUP_PATH;
