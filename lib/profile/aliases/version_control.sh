@@ -12,6 +12,7 @@ alias p='git push'
 alias po="git push --set-upstream origin \"\$(git rev-parse --abbrev-ref HEAD)\""
 alias gprp='git pull --rebase && git push'
 alias brch="$SHELLCONF_PATH/bin/branch_cherries.rb"
+alias gscop="git show --name-only --pretty='' | xargs bin/rubocop"
 
 # Git Log
 # -------
