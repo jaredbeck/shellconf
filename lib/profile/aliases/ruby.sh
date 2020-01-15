@@ -8,5 +8,4 @@ alias brs='bin/rails server'
 alias brc='bin/rails console'
 alias gem_versions=jb_gem_versions
 alias rg="jb_rubygem_page"
-alias bunup="$SHELLCONF_PATH/bin/ruby/bunup.rb"
 alias gitcov="$SHELLCONF_PATH/bin/ruby/gitcov.sh"
