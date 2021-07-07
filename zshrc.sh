@@ -45,10 +45,14 @@ export DISABLE_SPRING=1
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 
 # prompt
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-# PROMPT=\$vcs_info_msg_0_'%# '
-zstyle ':vcs_info:git:*' formats '%b'
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+# [format](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html)
+JB_GIT_PROMPT_PATH=~/code/git/contrib/completion/git-prompt.sh
+if [ -f "$JB_GIT_PROMPT_PATH" ]; then
+  source "$JB_GIT_PROMPT_PATH";
+  GIT_PS1_SHOWDIRTYSTATE=1
+  GIT_PS1_SHOWCOLORHINTS=1
+  GIT_PS1_SHOWUNTRACKEDFILES=1
+  GIT_PS1_SHOWUPSTREAM="verbose"
+  setopt PROMPT_SUBST ; PS1='$? %* %c $(__git_ps1 "(%s)") '
+fi
