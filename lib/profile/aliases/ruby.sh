@@ -9,3 +9,4 @@ alias brc='bin/rails console'
 alias gem_versions=jb_gem_versions
 alias rg="jb_rubygem_page"
 alias gitcov="$SHELLCONF_PATH/bin/ruby/gitcov.sh"
+alias dotodo="ruby $SHELLCONF_PATH/bin/ruby/do_rubocop_todos.rb"
