@@ -24,9 +24,10 @@ class DoRuboCopTodos
     todo_lines = File.readlines('.rubocop_todo.yml')
     raise 'todo file is empty' if todo_lines.empty?
     todo = todo_source_range(todo_lines)
-    File
-      .open('.rubocop_todo.yml', 'w')
-      .write(antislice(todo_lines, todo.source_range).join)
+    new_todo_contents = antislice(todo_lines, todo.source_range).join
+    File.open('.rubocop_todo.yml', 'w') do |f|
+      f.write(new_todo_contents)
+    end
     todo.cop_name
   end
 
