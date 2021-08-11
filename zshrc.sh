@@ -18,6 +18,11 @@ export PATH=${PATH}:/usr/libexec
 # Favorite editor
 export EDITOR=vi
 
+# ## TTY options
+# Remove `/` from `WORDCHARS`, because I want the `werase` control-character
+# (eg. `^W`) to work the way it used to, in bash.
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # Add identity to my SSH agent
 SSH_ID_FILE="$HOME/.ssh/id_rsa"
 if [ -f $SSH_ID_FILE ]; then
