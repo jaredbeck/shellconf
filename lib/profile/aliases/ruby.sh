@@ -3,6 +3,7 @@
 source "$SHELLCONF_PATH/lib/jb_gem_versions.sh"
 source "$SHELLCONF_PATH/lib/jb_rubygem_page.sh"
 
+alias abc='bin/rubocop --only "Metrics/AbcSize" --config /dev/null'
 alias be='bundle exec'
 alias brs='bin/rails server'
 alias brc='bin/rails console'
