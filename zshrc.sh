@@ -46,9 +46,6 @@ fi
 eval "$(rbenv init -)"
 export DISABLE_SPRING=1
 
-# JS
-export PATH="/usr/local/opt/node@10/bin:$PATH"
-
 # prompt
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 # [format](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html)
