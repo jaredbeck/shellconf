@@ -9,7 +9,7 @@ class DoRuboCopTodos
   sig { void }
   def run
     cop_name = delete_one_todo
-    system 'rubocop -A'
+    system 'bin/rubocop -A'
     system 'git diff'
     puts 'Does the diff look good? Hit enter to continue'
     gets
