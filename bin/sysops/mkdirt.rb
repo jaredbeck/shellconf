@@ -16,9 +16,8 @@ class MkdirTouch
 
   def mkdir
     dirname = File.dirname(@path)
-    dir = Dir.new(dirname)
-    if File.exist?(dir)
-      if !File.directory?(dir)
+    if File.exist?(dirname)
+      if !File.directory?(dirname)
         abort 'File already exists: ' + dirname
       end
     else
