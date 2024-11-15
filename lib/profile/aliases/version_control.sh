@@ -14,6 +14,9 @@ alias gprp='git pull --rebase && git push'
 alias brch="$SHELLCONF_PATH/bin/branch_cherries.rb"
 alias gscop="git show --name-only --pretty='' | xargs bin/rubocop"
 
+# Print latest prd* tag
+alias gtag="git tag --list --sort -refname 'prd*' | head -n 1"
+
 # Git Log
 # -------
 
