@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source "$SHELLCONF_PATH/lib/profile/aliases/docker.sh"
 source "$SHELLCONF_PATH/lib/profile/aliases/games.sh"
 source "$SHELLCONF_PATH/lib/profile/aliases/heroku.sh"
 source "$SHELLCONF_PATH/lib/profile/aliases/java.sh"
