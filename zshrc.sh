@@ -58,3 +58,8 @@ if [ -f "$JB_GIT_PROMPT_PATH" ]; then
   GIT_PS1_SHOWUPSTREAM="verbose"
   setopt PROMPT_SUBST ; PS1='$? %* %c $(__git_ps1 "(%s)") '
 fi
+
+# git for ~/.dotfiles
+# git init --bare ~/.dotfiles
+alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
